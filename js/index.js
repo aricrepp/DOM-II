@@ -4,6 +4,7 @@ const secondElement = document.querySelectorAll(".img-content img");
 const thirdElement = document.querySelector(".text-content h2");
 const fourthElement = document.querySelector("footer");
 const fifthElement = document.querySelectorAll("a");
+const sixthElement = document.querySelector("img");
 
 
 firstElement.addEventListener("mouseenter", function(){
@@ -51,3 +52,21 @@ fourthElement.addEventListener("mousemove", function(){
 });
 
 fifthElement.addEventListener()
+
+let lksp = 0;
+let ticking = false;
+
+function spin(sp){
+    sixthElement.style.transform = `rotate(${sp})`;
+}
+
+window.addEventListener("scroll", function(e) => {
+    lksp = window.scrollY;
+    if(!ticking){
+        window.requestAnimationFrame(function(){
+            spin(lksp);
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
